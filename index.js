@@ -17,7 +17,7 @@ app.post('/telegram', async (req, res) => {
     const client = new Client({ name: 'telegram-bot', version: '1.0.0' })
     await client.connect(new StreamableHTTPClientTransport(
       new URL(`${process.env.JARVIS_URL}/mcp`),
-      { requestInit: { headers: { Authorization: `Bearer ${process.env.AGENT_API_KEY}` } } }
+      { requestInit: { headers: { Authorization: `Bearer ${process.env.AGENT_API_KEY}` } }, timeout: 900000 }
     ))
     await client.callTool({
       name: 'chat',
