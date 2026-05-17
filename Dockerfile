@@ -1,2 +1,7 @@
-FROM n8nio/n8n:latest
-EXPOSE 5678
+FROM node:20-alpine
+WORKDIR /app
+COPY package.json .
+RUN npm install --production
+COPY index.js .
+EXPOSE 3000
+CMD ["node", "index.js"]
